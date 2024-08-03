@@ -1,17 +1,23 @@
 import React, {useEffect, useState} from "react"
-import "./movieList.css"
+import "./movie.css"
 import { useParams } from "react-router-dom"
-import Cards from "../card/card"
+import Cards from "../../components/card/card"
 
 const MovieList = () => {
     
-    const [movieList, setMovieList] = useState([])
+   
     const {type} = useParams()
 
-    useEffect(() => {
-        getData()
-    }, [])
+  return (
+  <MovieListComponent type={type} />)
+}
 
+export default MovieList; 
+
+export const MovieListComponent = ({type}) => {
+    
+    const [movieList, setMovieList] = useState([])
+    
     useEffect(() => {
         getData()
     }, [type])
@@ -35,5 +41,3 @@ const MovieList = () => {
         </div>
     )
 }
-
-export default MovieList

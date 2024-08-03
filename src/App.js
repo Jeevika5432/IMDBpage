@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
         <Router>
-          <Header />
+          <Header /> 
             <Routes>
                 <Route index element={<Home />}></Route>
                 <Route path="movie/:id" element={<Movie />}></Route>

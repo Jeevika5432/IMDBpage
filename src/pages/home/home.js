@@ -2,12 +2,14 @@ import React, { useEffect , useState } from "react";
 import "./home.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { Link } from "react-router-dom";
+import { MovieListComponent } from "../movieDetail/movie";
 
 const Home = () => {
 
     const [popularMovies, setPopularMovies ] = useState([])
       useEffect(() => {
-    fetch("https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbno4c3FUOXROM3ViUFh5ZXlFazJFQjR1SzZiQXxBQ3Jtc0tsTmdfZ0ZoSTNxbFhKdm05QXhyblZSaWtHS2tUZGxlczlzeHA4UXlTVU9uUk9EQnpDWkswOC1jcy1aWlhoUlNBRlB6NzRmeEpKVWhFSHRITEpfWmYzdkpFRzVWZXFvbHRRRUtxbjhPVE95Nkg2bUJCRQ&q=https%3A%2F%2Fapi.themoviedb.org%2F3%2Fmovie%2Fpopular%3Fapi_key%3D4e44d9029b1270a757cddc766a1bcb63%26language%3Den-US&v=KH-pw1cv34E")
+    fetch("https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US")
       .then(res => res.json())
       .then(data => setPopularMovies(data.results));
   }, []);
@@ -51,7 +53,7 @@ const Home = () => {
             </Carousel>
         </div>
    
-    
+        <MovieListComponent type={"popular"} />
     </>
   )
 }
